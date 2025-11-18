@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block  contents %}
+<style>
+body{
+    background-color: rgba(26, 55, 182, 0.137);
+}
+.conteiner{
+    margin-top: 100px;
+    animation: start_animation 650ms ease-out;
+}
+@keyframes start_animation{
+  from{
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to{
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+.card{
+    margin:auto;
+    margin-top: 10px;
+    border-radius: 20px;
+    width:600px;
+    padding-bottom: 10px;
+    transition: transform 300ms ease-out;
+}
+.card:hover{
+transform: scale(1.1);
+}
+h5{
+    font-size:20px;
+    font-family:Arial, Helvetica, sans-serif;
+}
+p{
+    font-size: 17px;
+    font-family:Arial, Helvetica, sans-serif;
+
+}
+
+    
+</style>
+<div class="conteiner">
+  {% for tweet in tweets %}
+    <div class="card">
+     <div class="card-body">
+     <h5 class="card-title">@{{tweet.username}}</h5>
+     <p class="card-text">{{tweet.message}}</p>
+      {% if tweet.username == user %}
+         <a href="{% url 'tweetapp:deletetweet' id=tweet.id %}" class="btn btn-danger">Delete</a>
+      {% endif %}
+     
+  </div>
+    </li>
+</div>
+  
+    {% endfor %}
+{% endblock  %}

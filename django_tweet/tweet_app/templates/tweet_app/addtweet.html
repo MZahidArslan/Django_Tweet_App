@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block contents %}  
+</div>
+<style>
+body{
+  background-color: rgba(26, 55, 182, 0.137);
+ 
+}
+.mb-3{
+animation: start_animation 650ms ease-out;
+}
+@keyframes start_animation{
+  from{
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to{
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+label{
+font-weight: bold;
+}
+input{
+  height: 50px;
+}
+</style>
+  <form action=""  method="POST" style="width: 50%; margin: auto; margin-top:100px;">
+       {% csrf_token %}
+  </div>
+  <div class="mb-3">
+    <label for="message" class="form-label">Message</label>
+    <textarea name="message" id="message" placeholder="Please Enter Your Message" class="form-control" style="min-height: 200px;"></textarea>
+    <br>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock  %}
